@@ -1,2 +1,2 @@
 # Co-teaching
-Co-teaching: Robust Training of Deep Neural Networks with Extremely Noisy Labels
+Co-teaching: Robust training of deep neural networks with extremely noisy labels
