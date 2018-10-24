@@ -1,4 +1,4 @@
 # Co-teaching
-Co-teaching: Robust training of deep neural networks with extremely noisy labels
+Co-teaching: Robust Training of Deep Neural Networks with Extremely Noisy Labels
 
 Pytorch implementation
