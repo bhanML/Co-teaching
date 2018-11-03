@@ -74,3 +74,4 @@ class CNN(nn.Module):
             logit=call_bn(self.bn_c1, logit)
 	return logit
 
+
