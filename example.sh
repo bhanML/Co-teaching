@@ -1,1 +1,1 @@
-python main.py --dataset cifar10 --noise_type symmetric --noise_rate 0.8
+python main.py --dataset mnist --noise_type pairflip --noise_rate 0.45
