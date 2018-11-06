@@ -32,7 +32,8 @@ Install PyTorch via:
 pip install http://download.pytorch.org/whl/cu80/torch-0.3.0.post4-cp27-cp27mu-linux_x86_64.whl
 ```
 
-## Running Co-teaching on benchmark datasets  
+## Running Co-teaching on benchmark datasets (MNIST, CIFAR-10 and CIFAR-100)
+Here is an example: 
 
 ```bash
 python main.py --dataset cifar10 --noise_type symmetric --noise_rate 0.5 
@@ -48,4 +49,4 @@ python main.py --dataset cifar10 --noise_type symmetric --noise_rate 0.5
 
 
 
-Contact: Xingrui Yu (xingrui.yu@uts.edu.au); Bo Han (bo.han@riken.jp).
+Contact: Xingrui Yu (xingrui.yu@student.uts.edu.au); Bo Han (bo.han@riken.jp).
