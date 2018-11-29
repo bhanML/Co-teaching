@@ -16,7 +16,7 @@ To be presented at [NeurIPS 2018](https://nips.cc/Conferences/2018/).
 
 If you find this code useful in your research then please cite  
 ```bash
-@inproceedings{han2018co,
+@inproceedings{han2018coteaching,
   title={Co-teaching: Robust training of deep neural networks with extremely noisy labels},
   author={Han, Bo and Yao, Quanming and Yu, Xingrui and Niu, Gang and Xu, Miao and Hu, Weihua and Tsang, Ivor and Sugiyama, Masashi},
   booktitle={NeurIPS},
