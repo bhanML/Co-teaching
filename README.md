@@ -1,5 +1,9 @@
-# Co-teaching (related work: Masking (NIPS'18))
+# Co-teaching 
 NIPS'18: Co-teaching: Robust Training of Deep Neural Networks with Extremely Noisy Labels (Pytorch implementation).
+
+Related work: 
+NIPS'18: Masking: A New Perspective of Noisy Supervision
+Code: https://github.com/bhanML/Masking
 
 ========
 
