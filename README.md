@@ -5,7 +5,7 @@ Another related work in NeurIPS'18:
 
 [Masking: A New Perspective of Noisy Supervision](https://arxiv.org/abs/1805.08193)
 
-Code: https://github.com/bhanML/Masking
+Code available: https://github.com/bhanML/Masking
 
 ========
 
