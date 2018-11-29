@@ -16,10 +16,11 @@ To be presented at [NeurIPS 2018](https://nips.cc/Conferences/2018/).
 
 If you find this code useful in your research then please cite  
 ```bash
-@inproceedings{Han2018CoteachingRT,
-  title={Co-teaching: Robust Training of Deep Neural Networks with Extremely Noisy Labels},
-  author={Bo Han and Quanming Yao and Xingrui Yu and Gang Niu and Miao Xu and Weihua Hu and Ivor W. Tsang and Masashi Sugiyama},
-  booktitle={NeurIPS},
+@inproceedings{han2018co,
+  title={Co-teaching: Robust training of deep neural networks with extremely noisy labels},
+  author={Han, Bo and Yao, Quanming and Yu, Xingrui and Niu, Gang and Xu, Miao and Hu, Weihua and Tsang, Ivor and Sugiyama, Masashi},
+  booktitle={Advances in Neural Information Processing Systems},
+  pages={8535--8545},
   year={2018}
 }
 ```  
