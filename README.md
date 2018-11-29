@@ -11,7 +11,7 @@ Code: https://github.com/bhanML/Masking
 
 This is the code for the paper:
 [Co-teaching: Robust Training of Deep Neural Networks with Extremely Noisy Labels](https://arxiv.org/abs/1804.06872)  
-Bo Han, Quanming Yao, Xingrui Yu, Gang Niu, Miao Xu, Weihua Hu, Ivor Tsang, Masashi Sugiyama  
+Bo Han*, Quanming Yao*, Xingrui Yu, Gang Niu, Miao Xu, Weihua Hu, Ivor Tsang, Masashi Sugiyama  
 To be presented at [NeurIPS 2018](https://nips.cc/Conferences/2018/).  
 
 If you find this code useful in your research then please cite  
