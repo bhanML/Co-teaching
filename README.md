@@ -19,7 +19,7 @@ If you find this code useful in your research then please cite
 @inproceedings{han2018co,
   title={Co-teaching: Robust training of deep neural networks with extremely noisy labels},
   author={Han, Bo and Yao, Quanming and Yu, Xingrui and Niu, Gang and Xu, Miao and Hu, Weihua and Tsang, Ivor and Sugiyama, Masashi},
-  booktitle={Advances in Neural Information Processing Systems},
+  booktitle={NeurIPS},
   pages={8535--8545},
   year={2018}
 }
