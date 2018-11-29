@@ -1,4 +1,4 @@
-# Co-teaching
+# Co-teaching (related work: Masking (NIPS'18))
 NIPS'18: Co-teaching: Robust Training of Deep Neural Networks with Extremely Noisy Labels (Pytorch implementation).
 
 ========
@@ -50,5 +50,3 @@ python main.py --dataset cifar10 --noise_type symmetric --noise_rate 0.5
 
 
 Contact: Xingrui Yu (xingrui.yu@student.uts.edu.au); Bo Han (bo.han@riken.jp).
-
-## NIPS'18: Masking: A New Perspective of Noisy Supervision
