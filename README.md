@@ -3,7 +3,7 @@ NIPS'18: Co-teaching: Robust Training of Deep Neural Networks with Extremely Noi
 
 Related work: 
 
-NIPS'18: Masking: A New Perspective of Noisy Supervision
+NIPS'18: [Masking: A New Perspective of Noisy Supervision](https://arxiv.org/abs/1805.08193)
 
 Code: https://github.com/bhanML/Masking
 
