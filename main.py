@@ -149,7 +149,7 @@ if os.path.exists(txtfile):
 
 def accuracy(logit, target, topk=(1,)):
     """Computes the precision@k for the specified values of k"""
-    output = F.log_softmax(logit, dim=1)
+    output = F.softmax(logit, dim=1)
     maxk = max(topk)
     batch_size = target.size(0)
 
@@ -184,18 +184,16 @@ def train(train_loader,epoch, model1, optimizer1, model2, optimizer2):
         labels = Variable(labels).cuda()
         
         # Forward + Backward + Optimize
-	logits=model1(images)
-        outputs1 = F.log_softmax(logits, dim=1)
+	logits1=model1(images)
         prec1, _ = accuracy(logits, labels, topk=(1, 5))
         train_total+=1
 	train_correct+=prec1
 
         logits2 = model2(images)
-        outputs2 = F.log_softmax(logits2, dim=1)
         prec2, _ = accuracy(logits2, labels, topk=(1, 5))
         train_total2+=1
         train_correct2+=prec2
-        loss_1, loss_2, pure_ratio_1, pure_ratio_2 = loss_coteaching(outputs1, outputs2, labels, rate_schedule[epoch], ind, noise_or_not)
+        loss_1, loss_2, pure_ratio_1, pure_ratio_2 = loss_coteaching(logits1, logits2, labels, rate_schedule[epoch], ind, noise_or_not)
         pure_ratio_1_list.append(100*pure_ratio_1)
         pure_ratio_2_list.append(100*pure_ratio_2)
 
@@ -222,7 +220,7 @@ def evaluate(test_loader, model1, model2):
     for images, labels, _ in test_loader:
         images = Variable(images).cuda()
         logits1 = model1(images)
-        outputs1 = F.log_softmax(logits1, dim=1)
+        outputs1 = F.softmax(logits1, dim=1)
         _, pred1 = torch.max(outputs1.data, 1)
         total1 += labels.size(0)
         correct1 += (pred1.cpu() == labels).sum()
@@ -233,7 +231,7 @@ def evaluate(test_loader, model1, model2):
     for images, labels, _ in test_loader:
         images = Variable(images).cuda()
         logits2 = model2(images)
-        outputs2 = F.log_softmax(logits2, dim=1)
+        outputs2 = F.softmax(logits2, dim=1)
         _, pred2 = torch.max(outputs2.data, 1)
         total2 += labels.size(0)
         correct2 += (pred2.cpu() == labels).sum()
