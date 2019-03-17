@@ -185,7 +185,7 @@ def train(train_loader,epoch, model1, optimizer1, model2, optimizer2):
         
         # Forward + Backward + Optimize
 	logits1=model1(images)
-        prec1, _ = accuracy(logits, labels, topk=(1, 5))
+        prec1, _ = accuracy(logits1, labels, topk=(1, 5))
         train_total+=1
 	train_correct+=prec1
 
