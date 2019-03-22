@@ -54,16 +54,16 @@ if args.dataset=='mnist':
                                 train=True, 
                                 transform=transforms.ToTensor(),
                                 noise_type=args.noise_type,
-				noise_rate=args.noise_rate
-    			    )
+                                noise_rate=args.noise_rate
+                         )
     
     test_dataset = MNIST(root='./data/',
                                download=True,  
                                train=False, 
                                transform=transforms.ToTensor(),
                                noise_type=args.noise_type,
-			       noise_rate=args.noise_rate
-    			    )
+                               noise_rate=args.noise_rate
+                        )
     
 if args.dataset=='cifar10':
     input_channel=3
@@ -76,16 +76,16 @@ if args.dataset=='cifar10':
                                 train=True, 
                                 transform=transforms.ToTensor(),
                                 noise_type=args.noise_type,
-				noise_rate=args.noise_rate
-    			    )
+                                noise_rate=args.noise_rate
+                           )
     
     test_dataset = CIFAR10(root='./data/',
                                 download=True,  
                                 train=False, 
                                 transform=transforms.ToTensor(),
                                 noise_type=args.noise_type,
-			        noise_rate=args.noise_rate
-    			    )
+                                noise_rate=args.noise_rate
+                          )
 
 if args.dataset=='cifar100':
     input_channel=3
@@ -98,16 +98,16 @@ if args.dataset=='cifar100':
                                 train=True, 
                                 transform=transforms.ToTensor(),
                                 noise_type=args.noise_type,
-				noise_rate=args.noise_rate
-    			    )
+                                noise_rate=args.noise_rate
+                            )
     
     test_dataset = CIFAR100(root='./data/',
                                 download=True,  
                                 train=False, 
                                 transform=transforms.ToTensor(),
                                 noise_type=args.noise_type,
-				noise_rate=args.noise_rate
-    			    )
+                                noise_rate=args.noise_rate
+                            )
 
 if args.forget_rate is None:
     forget_rate=args.noise_rate
@@ -177,17 +177,17 @@ def train(train_loader,epoch, model1, optimizer1, model2, optimizer2):
 
     for i, (images, labels, indexes) in enumerate(train_loader):
         ind=indexes.cpu().numpy().transpose()
-	if i>args.num_iter_per_epoch:
-	    break
+        if i>args.num_iter_per_epoch:
+            break
       
         images = Variable(images).cuda()
         labels = Variable(labels).cuda()
         
         # Forward + Backward + Optimize
-	logits1=model1(images)
+        logits1=model1(images)
         prec1, _ = accuracy(logits1, labels, topk=(1, 5))
         train_total+=1
-	train_correct+=prec1
+        train_correct+=prec1
 
         logits2 = model2(images)
         prec2, _ = accuracy(logits2, labels, topk=(1, 5))
@@ -288,7 +288,7 @@ def main():
         # train models
         cnn1.train()
         adjust_learning_rate(optimizer1, epoch)
-	cnn2.train()
+        cnn2.train()
         adjust_learning_rate(optimizer2, epoch)
         train_acc1, train_acc2, pure_ratio_1_list, pure_ratio_2_list=train(train_loader, epoch, cnn1, optimizer1, cnn2, optimizer2)
         # evaluate models
