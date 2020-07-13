@@ -58,4 +58,4 @@ Contact: Xingrui Yu (xingrui.yu@student.uts.edu.au); Bo Han (bo.han@riken.jp).
 
 ## AutoML
 Please check the automated machine learning (AutoML) version of Co-teaching in
-- Searching to Exploit Memorization Effect in Learning from Corrupted Labels. [paper](https://arxiv.org/abs/1911.02377)
+- Searching to Exploit Memorization Effect in Learning from Corrupted Labels. ICML-2020 [paper](https://arxiv.org/abs/1911.02377)
