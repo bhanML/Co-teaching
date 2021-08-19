@@ -37,7 +37,6 @@ args = parser.parse_args()
 # Seed
 torch.manual_seed(args.seed)
 torch.cuda.manual_seed(args.seed)
-
 # Hyper Parameters
 batch_size = 128
 learning_rate = args.lr 
@@ -159,13 +158,13 @@ def accuracy(logit, target, topk=(1,)):
 
     res = []
     for k in topk:
-        correct_k = correct[:k].view(-1).float().sum(0, keepdim=True)
+        correct_k = correct[:k].contiguous().view(-1).float().sum(0, keepdim=True)
         res.append(correct_k.mul_(100.0 / batch_size))
     return res
 
 # Train the Model
 def train(train_loader,epoch, model1, optimizer1, model2, optimizer2):
-    print 'Training %s...' % model_str
+    print( 'Training %s...' % model_str)
     pure_ratio_list=[]
     pure_ratio_1_list=[]
     pure_ratio_2_list=[]
@@ -205,7 +204,7 @@ def train(train_loader,epoch, model1, optimizer1, model2, optimizer2):
         optimizer2.step()
         if (i+1) % args.print_freq == 0:
             print ('Epoch [%d/%d], Iter [%d/%d] Training Accuracy1: %.4F, Training Accuracy2: %.4f, Loss1: %.4f, Loss2: %.4f, Pure Ratio1: %.4f, Pure Ratio2 %.4f' 
-                  %(epoch+1, args.n_epoch, i+1, len(train_dataset)//batch_size, prec1, prec2, loss_1.data[0], loss_2.data[0], np.sum(pure_ratio_1_list)/len(pure_ratio_1_list), np.sum(pure_ratio_2_list)/len(pure_ratio_2_list)))
+                  %(epoch+1, args.n_epoch, i+1, len(train_dataset)//batch_size, prec1, prec2, loss_1.data, loss_2.data, np.sum(pure_ratio_1_list)/len(pure_ratio_1_list), np.sum(pure_ratio_2_list)/len(pure_ratio_2_list)))
 
     train_acc1=float(train_correct)/float(train_total)
     train_acc2=float(train_correct2)/float(train_total2)
@@ -213,7 +212,8 @@ def train(train_loader,epoch, model1, optimizer1, model2, optimizer2):
 
 # Evaluate the Model
 def evaluate(test_loader, model1, model2):
-    print 'Evaluating %s...' % model_str
+    print('Evaluating %s...' % model_str)
+    del1 = model1.cuda()
     model1.eval()    # Change model to 'eval' mode.
     correct1 = 0
     total1 = 0
@@ -225,7 +225,8 @@ def evaluate(test_loader, model1, model2):
         total1 += labels.size(0)
         correct1 += (pred1.cpu() == labels).sum()
 
-    model2.eval()    # Change model to 'eval' mode 
+    model2 = model2.cuda()
+    model2.eval()    # Change model to 'eval' mode
     correct2 = 0
     total2 = 0
     for images, labels, _ in test_loader:
@@ -243,7 +244,7 @@ def evaluate(test_loader, model1, model2):
 
 def main():
     # Data Loader (Input Pipeline)
-    print 'loading dataset...'
+    print('loading dataset...')
     train_loader = torch.utils.data.DataLoader(dataset=train_dataset,
                                                batch_size=batch_size, 
                                                num_workers=args.num_workers,
@@ -256,15 +257,15 @@ def main():
                                               drop_last=True,
                                               shuffle=False)
     # Define models
-    print 'building model...'
+    print( 'building model...')
     cnn1 = CNN(input_channel=input_channel, n_outputs=num_classes)
     cnn1.cuda()
-    print cnn1.parameters
+    print( cnn1.parameters)
     optimizer1 = torch.optim.Adam(cnn1.parameters(), lr=learning_rate)
     
     cnn2 = CNN(input_channel=input_channel, n_outputs=num_classes)
     cnn2.cuda()
-    print cnn2.parameters
+    print( cnn2.parameters)
     optimizer2 = torch.optim.Adam(cnn2.parameters(), lr=learning_rate)
 
     mean_pure_ratio1=0
